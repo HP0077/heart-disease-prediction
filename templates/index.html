@@ -3,113 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAFEHEARTAI</title>
+    <title>SafeHeartAI - Heart Health Predictor</title>
     
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffcccc, #ff9999);
-            color: #333;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            background: linear-gradient(135deg, #ff4d4d, #ff99cc);
+            color: #fff;
             text-align: center;
             padding: 20px;
-            position: relative;
         }
         .header {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: fixed;
+            top: 10px;
+            left: 10px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            background:  rgb(255, 255, 255);
+            padding: 10px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
         }
         .logo {
-            width: 300px;
-            height: auto;
+            width: 250px;
         }
-        .title {
-            font-size: 40px;
-            font-weight: 700;
-            color: #b30000;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        .hero-section {
+            margin-top: 100px;
+            padding: 50px;
+        }
+        .hero-section h1 {
+            font-size: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .hero-section p {
+            font-size: 22px;
+            max-width: 700px;
+            margin: auto;
+        }
+        .scroll-button {
+            margin-top: 30px;
+            background: #000;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .scroll-button:hover {
+            background: #222;
+            transform: translateY(-3px);
         }
         .info-section {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            font-size: 20px;
-            line-height: 1.8;
-            width: 80%;
-            max-width: 900px;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            margin-top: 80px;
-        }
-        .info-section:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: auto;
+            text-align: left;
         }
         .start-button {
-            background-color: #b30000;
-            color: white;
-            padding: 18px 50px;
+            background: #000;
+            padding: 20px 50px;
             font-size: 20px;
-            border: none;
             border-radius: 50px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-weight: 700;
-            transition: all 0.4s ease;
-            display: inline-block;
+            font-weight: bold;
             text-decoration: none;
-            margin-top: 30px;
-            animation: pulse 2s infinite;
+            display: inline-block;
+            color: #fff;
+            margin-top: 70px; /* Increased margin-top to add more space */
+            transition: all 0.3s;
         }
         .start-button:hover {
-            background-color: #990000;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            background: #222;
+            transform: translateY(-5px);
         }
         .footer {
-            margin-top: 40px;
-            color: #888;
+            margin-top: 50px;
             font-size: 14px;
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
+            color: #ddd;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="SAFEHEARTAI Logo" class="logo">
-        <div class="title">SafeHeartAI</div>
+    <div class="header" data-aos="fade-down">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="SafeHeartAI Logo" class="logo">
     </div>
-    <div class="info-section">
-        <p>Welcome to SafeHeartAI - your trusted companion in heart health assessment. Click below to get started.</p>
+    
+    <div class="hero-section" data-aos="zoom-in">
+        <h1>AI-Powered Heart Disease Prediction</h1>
+        <p>Discover the power of AI in predicting heart disease risks. SafeHeartAI uses machine learning to assess your heart health in seconds.</p>
     </div>
-    <a href="{{ url_for('predict_page') }}" class="start-button">Get Started</a>
+    
+    <div id="info" class="info-section" data-aos="fade-up">
+        <h2>Heart Disease - A Growing Concern</h2>
+        <p>Heart disease is the leading cause of death worldwide, with over 18 million deaths annually. Factors such as unhealthy lifestyles, poor diet, lack of exercise, and genetic predisposition contribute to the rising numbers.</p>
+        <p>According to the World Health Organization, cardiovascular diseases account for nearly 31% of all global deaths. The need for early diagnosis and prevention has never been more urgent.</p>
+        <p>SafeHeartAI is designed to help bridge this gap by leveraging AI to detect early signs of heart disease, giving users actionable insights for a healthier future.</p>
+    </div>
+    
+    <a href="{{ url_for('predict_page') }}" class="start-button" data-aos="zoom-in">Get Started</a>
+   
     <div class="footer">
         <p>&copy; 2024 SafeHeartAI. All Rights Reserved.</p>
     </div>
+    
+    <script>
+        AOS.init(); // Initialize AOS animations
+    </script>
 </body>
 </html>
