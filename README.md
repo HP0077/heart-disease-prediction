@@ -1,4 +1,4 @@
-# heart-disease-prediction
+
 # SafeHeartAI - Heart Disease Prediction 🫀
 
 A machine learning-powered web application that predicts heart disease risk based on patient health data. Built with Flask and scikit-learn, featuring an intuitive web interface for healthcare professionals and individuals to assess cardiovascular risk.
