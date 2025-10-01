@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-# Load trained model safely
+# Loading the trained model 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "model.pkl")
 try:
     model = pickle.load(open(MODEL_PATH, "rb"))
@@ -15,13 +15,13 @@ except Exception as e:
 
 @app.route("/")
 def home():
-    """Render the landing page"""
-    return render_template("index.html")  # Updated reference
+    """Render the landing page(Front page ke liye)"""
+    return render_template("index.html")  
 
 @app.route("/predict-page")
 def predict_page():
-    """Render the prediction page"""
-    return render_template("home.html")  # Updated reference
+    """Render the prediction page(Main page ke liye)"""
+    return render_template("home.html")  
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -32,7 +32,7 @@ def predict():
         if not data:
             return jsonify({"error": "No data received"}), 400
 
-        # Convert input data to NumPy array for model prediction
+        # Here we will convert the input data to numpy array
         input_features = np.array([[float(data.get(k, 0)) for k in [
             "male", "age", "education", "currentSmoker", "cigsPerDay",
             "BPMeds", "prevalentStroke", "prevalentHyp", "diabetes",
@@ -52,6 +52,7 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
