@@ -3,9 +3,13 @@
 
 A machine learning-powered web application that predicts heart disease risk based on patient health data. Built with Flask and scikit-learn, featuring an intuitive web interface for healthcare professionals and individuals to assess cardiovascular risk.
 
+---
+
 ## 🚀 Live Demo
 
 **Try it now:** [https://safeheartai.onrender.com/](https://safeheartai.onrender.com/)
+
+---
 
 ## ✨ Features
 
@@ -15,12 +19,16 @@ A machine learning-powered web application that predicts heart disease risk base
 - **Risk Classification**: Binary classification (High Risk / Low Risk)
 - **Fast & Reliable**: Deployed on Render for 24/7 availability
 
+---
+
 ## 🔬 Model Details
 
 - **Algorithm**: Random Forest Classifier
 - **Dataset**: Framingham Heart Study data (3,648 records)
 - **Features**: 15 health indicators including age, cholesterol, blood pressure, smoking habits, etc.
 - **Accuracy**: Trained on validated cardiovascular risk factors
+
+---
 
 ## 📊 Input Parameters
 
@@ -30,6 +38,21 @@ The model evaluates the following health metrics:
 - Medical history (Blood pressure medication, Stroke, Hypertension, Diabetes)
 - Vital signs (Systolic/Diastolic BP, Heart rate, BMI)
 - Lab results (Total cholesterol, Glucose levels)
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Landing Page 
+![Home 1](screenshots/index.png)
+
+### 📝 Low Risk Output
+![Home 2](screenshots/low_risk.png)
+
+### 📝 High Risk Output
+![Register](screenshots/high_risk.png)
+
+---
 
 ## 🛠️ Technology Stack
 
